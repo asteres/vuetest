@@ -1,18 +1,18 @@
-var app1 = new Vue({
-  el: '#app-1',
+let app1 = new Vue({
+  el: '#app',
   data: {
     message: 'Hello Olivia!!!'
   }
 });
 
-var app2 = new Vue({
+let app2 = new Vue({
   el: '#app-2',
   data: {
     message: 'You loaded this page on ' + new Date()
   }
 });
 
-var app3 = new Vue({
+let app3 = new Vue({
   el: '#app-3',
   data: {
     options: {
@@ -21,7 +21,7 @@ var app3 = new Vue({
   }
 });
 
-var app4 = new Vue({
+let app4 = new Vue({
   el: '#app-4',
   data: {
     todos: [
@@ -44,7 +44,7 @@ var app5 = new Vue({
   }
 });
 
-var app6 = new Vue({
+let app6 = new Vue({
   el: '#app-6',
   data: {
     message: 'Hello Vue!'
@@ -56,7 +56,7 @@ Vue.component('todo-item', {
   template: '<li>{{ todo.text }}</li>'
 });
 
-var app7 = new Vue({
+let app7 = new Vue({
   el: '#app-7',
   data: {
     groceryList: [
