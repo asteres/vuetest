@@ -25,72 +25,107 @@
   </head>
   
   <body>
-      <h1>Vue SandBox</h1>
-      <hr>
-      
-      <div id="app" class="row">
-        <h2>App 1</h2>
-        <p>{{ message }}</p>
-        <hr>
-      </div>
-    
-      <div id="app-2">
-        <h2>App 2</h2>
-        <span v-bind:title="message">
-          Hover your mouse over me for a few seconds to see my dynamically bound title!
-        </span>
-        <hr>
-      </div>
-
-      <div id="app-3">
-        <h2>App 3</h2>
-        <transition name="slide-fade">
-        <p v-if="options.seen">Now you see me</p>
-        </transition>
-        <button v-on:click="options.seen = !options.seen">
-          toggle
-        </button>
-        <hr>
-      </div>
-    
-      <div id="app-4">
-        <h2>App 4</h2>
-        <ol>
-          <li v-for="todo in todos">
-            {{ todo.text }}
-          </li>
-        </ol>
-        <hr>
-      </div>
-
-      <div id="app-5">
-        <h2>App 5</h2>
-        <p>{{ message }}</p>
-        <button v-on:click="reverseMessage">Reverse Message</button>
-        <hr>
-      </div>
-    
-      <div id="app-6">
-        <h2>App 6</h2>
-        <p>{{ message }}</p>
-        <input v-model="message">
-        <hr>
-      </div>
-    
-      <div id="app-7">
-        <h2>App 7</h2>
-        <ol>
-          <!-- Now we provide each todo-item with the todo object    -->
-          <!-- it's representing, so that its content can be dynamic -->
-          <todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
-        </ol>
-        <hr>
-      </div>
+		<div class="container-fluid">
+			<div id="heading" class="row text-center">
+				<h1>
+					Vue.js &amp; Bootstrap.js Sandbox
+				</h1>
+			</div>
+			<div id="app-1" class="row">
+				<div class="col-md-4 col-md-offset-2">
+					<h2>
+						Application 1
+					</h2>
+				</div>
+				<div class="col-md-4 col-md-offset-2">
+					Message = {{ message }}
+				</div>
+			</div>
+			<div id="app-2" class="row">
+				<div class="col-md-4 col-md-offset-2">
+					<h2>
+						Application 2
+					</h2>
+				</div>
+				<div class="col-md-4 col-md-offset-2">
+					<span v-bind:title="message">
+						Hover your mouse over me for a few seconds
+						to see my dynamically bound title!
+					</span>
+				</div>
+			</div>
+			<div id="app-3" class="row">
+				<div class="col-md-4 col-md-offset-2">
+					<h2>
+						Application 3
+					</h2>
+				</div>
+				<div class="col-md-4 col-md-offset-2">
+					<p v-if="seen">Now you see me</p>
+				</div>
+			</div>
+			<div id="app-4" class="row">
+				<div class="col-md-4 col-md-offset-2">
+					<h2>
+						Application 4
+					</h2>
+				</div>
+				<div class="col-md-4 col-md-offset-2">
+			        <ol>
+						<li v-for="todo in todos">
+							{{ todo.text }}
+						</li>
+                    </ol>
+				</div>
+			</div>
+			<div id="app-5" class="row">
+				<div class="col-md-4 col-md-offset-2">
+					<h2>
+						Application 5
+					</h2>
+				</div>
+				<div class="col-md-4 col-md-offset-2">
+					<p>
+						{{ message }}
+					</p>
+					<button v-on:click="reverseMessage">
+						Reverse Message
+					</button>
+				</div>
+			</div>
+			<div id="app-6" class="row">
+				<div class="col-md-4 col-md-offset-2">
+					<h2>
+						Application 6
+					</h2>
+				</div>
+				<div class="col-md-4 col-md-offset-2">
+				    <p>
+						{{ message }}
+					</p>
+					<input v-model="message">
+				</div>
+			</div>
+				<div id="app-7" class="row">
+				<div class="col-md-4 col-md-offset-2">
+					<h2>
+						Application 7
+					</h2>
+				</div>
+				<div class="col-md-4 col-md-offset-2">
+				    <ol>
+					<!-- Now we provide each todo-item with the todo object    -->
+					<!-- it's representing, so that its content can be dynamic -->
+					<todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
+					</ol>
+				</div>
+			</div>
+		</div>
     <!-- Your web-app is https, so your scripts need to be too -->
-    <script src="https://code.jquery.com/jquery-2.2.1.min.js"
+		<script src="https://code.jquery.com/jquery-2.2.1.min.js"
             integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
             crossorigin="anonymous"></script>
-    <script src="/client.js"></script>
+		<script src="/client.js"></script>
 
   </body>
 </html>
