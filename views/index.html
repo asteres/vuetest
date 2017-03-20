@@ -1,96 +1,85 @@
 <!-- This is a static file -->
 <!-- served from your routes in server.js -->
 
-<!-- You might want to try something fancier: -->
-<!-- html/nunjucks docs: http://mozilla.github.io/nunjucks/ -->
-<!-- jade: http://jade-lang.com/ -->
-<!-- haml: http://haml.info/tutorial.html -->
-<!-- hbs(handlebars): http://handlebarsjs.com/expressions.html -->
-
-<!-- This is a starter Gomix project setup for Vue.js and Bootstrap -->
-<!-- Remix to get going ...  --> 
-<!-- In includes the code from the Getting Started Vue.js Tutorial at: -->
-<!--           https://vuejs.org/v2/guide/index.html                 -->
-<!-- Bootstrap is also included in the HTML --> 
+<!-- From Udemy course -->
 
 
 
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Vue Sandbox</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/style.css">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Learning Vue JS</title>
+    <style>
+        .red-4 {
+            background-color: red;
+        }
+        .red-5 {
+            background-color: firebrick;
+        }
+        .btn {
+            border: 1px solid black;
+            padding: 5px;
+        }
+        div {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="myApp">
+        <h1 v-html="output.toUpperCase()"></h1>
+        <div v-bind:class="'red-' + count">{{ count + 1 }}</div>
+        <input v-model="searchme">
+        <div>Searching for {{ searchme }}</div>
+        <a v-on:click="vjson" class="btn">click me</a>
+        <ul>
+            <li v-for="index in filteredItems">{{ index.todo }}</li>
+        </ul>
+
+        <div class="red-4" v-show="!visjson">{{ $data }}</div>
+    </div>
+
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
-  </head>
-  
-  <body>
-      <h1>Vue SandBox</h1>
-      <hr>
-      
-      <div id="app" class="row">
-        <h2>App 1</h2>
-        <p>{{ message }}</p>
-        <hr>
-      </div>
-    
-      <div id="app-2">
-        <h2>App 2</h2>
-        <span v-bind:title="message">
-          Hover your mouse over me for a few seconds to see my dynamically bound title!
-        </span>
-        <hr>
-      </div>
-
-      <div id="app-3">
-        <h2>App 3</h2>
-        <transition name="slide-fade">
-        <p v-if="options.seen">Now you see me</p>
-        </transition>
-        <button v-on:click="options.seen = !options.seen">
-          toggle
-        </button>
-        <hr>
-      </div>
-    
-      <div id="app-4">
-        <h2>App 4</h2>
-        <ol>
-          <li v-for="todo in todos">
-            {{ todo.text }}
-          </li>
-        </ol>
-        <hr>
-      </div>
-
-      <div id="app-5">
-        <h2>App 5</h2>
-        <p>{{ message }}</p>
-        <button v-on:click="reverseMessage">Reverse Message</button>
-        <hr>
-      </div>
-    
-      <div id="app-6">
-        <h2>App 6</h2>
-        <p>{{ message }}</p>
-        <input v-model="message">
-        <hr>
-      </div>
-    
-      <div id="app-7">
-        <h2>App 7</h2>
-        <ol>
-          <!-- Now we provide each todo-item with the todo object    -->
-          <!-- it's representing, so that its content can be dynamic -->
-          <todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
-        </ol>
-        <hr>
-      </div>
-    <!-- Your web-app is https, so your scripts need to be too -->
-    <script src="https://code.jquery.com/jquery-2.2.1.min.js"
-            integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
-            crossorigin="anonymous"></script>
-    <script src="/client.js"></script>
-
-  </body>
+    <script>
+        var vm = new Vue({
+            el: '#myApp',
+            data: {
+                output: 'Hello World',
+                searchme: 'nothing yet',
+                visjson: true,
+                count: 4,
+                items: [
+                    {todo: "write code"},
+                    {todo: "create website"},
+                    {todo: "load content"}
+                ]
+            },
+            created: function() {
+                console.log('Instance created ' + this.output);
+            },
+            mounted: function() {
+                this.count++;
+                console.log('Instance mounted ' + this.output);
+            },
+            computed: {
+                filteredItems: function() {
+                    var searchme = this.searchme;
+                    return this.items.filter(function(item) {
+                        return item.todo.indexOf(searchme) > -1;
+                    });
+                }
+            },
+            methods: {
+                vjson: function() {
+                    console.log("clicked");
+                    this.visjson = !this.visjson;
+                    this.output = " updated : " + this.count;
+                    this.count++;
+                }
+            }
+        });
+        vm.output = "new<br>content";
+    </script>
+</body>
 </html>
